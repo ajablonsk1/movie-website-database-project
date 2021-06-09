@@ -14,6 +14,8 @@ import { ActorViewComponent } from './components/actor-view/actor-view.component
 import { DirectorViewComponent } from './components/director-view/director-view.component';
 import { DirectorMainPageComponent } from './components/director-main-page/director-main-page.component';
 import { ActorMainPageComponent } from './components/actor-main-page/actor-main-page.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ActorMainPageComponent } from './components/actor-main-page/actor-main-
     ActorViewComponent,
     DirectorViewComponent,
     DirectorMainPageComponent,
-    ActorMainPageComponent
+    ActorMainPageComponent,
+    ReviewsComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,

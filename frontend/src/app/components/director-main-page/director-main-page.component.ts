@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Director } from 'src/app/models/director.model';
+import { DirectorService } from 'src/app/services/director.service';
 
 @Component({
   selector: 'app-director-main-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorMainPageComponent implements OnInit {
 
-  constructor() { }
+  directors: Director[];
+
+  constructor(private directorService: DirectorService) { }
 
   ngOnInit(): void {
+    this.directorService.getDirectors().subscribe((directors: any) => {
+      this.directors = directors;
+    })
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-top-movies',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMoviesComponent implements OnInit {
 
-  constructor() { }
+  isClicked: boolean;
+
+  movies: Movie[];
+
+  constructor(private movieService: MoviesService) { }
 
   ngOnInit(): void {
+    this.isClicked = false;
+  }
+
+  onSubmitClicked(n: string){
+    let m = parseInt(n);
+    this.movieService.getTopMovies(m).subscribe((movies: any) => {
+      this.movies = movies;
+    })
+    this.isClicked = true;
   }
 
 }

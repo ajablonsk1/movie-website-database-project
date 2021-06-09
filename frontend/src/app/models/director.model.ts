@@ -7,4 +7,5 @@ export class Director{
     movieNumber: number;
     topMovies: string[];
     description: string;
+    img: string;
 }

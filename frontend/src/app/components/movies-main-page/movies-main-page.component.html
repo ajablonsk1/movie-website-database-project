@@ -10,7 +10,7 @@
                 <div class="card-content">
                     <div class="columns is-centered">
                         <div class="column is-one-third">
-                            <img src="assets/home.jpeg">
+                            <img src="assets/{{movie.img}}" style="width: 200px; height: 300;">
                         </div>
                         <div class="column is-centered">
                             <div class="content">
@@ -21,6 +21,7 @@
                 </div>
                 <footer class="card-footer">
                 <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
+                <a href="/reviews/{{movie._id}}" class="card-footer-item">See reviews</a>
                 </footer>
             </div>
         </div>

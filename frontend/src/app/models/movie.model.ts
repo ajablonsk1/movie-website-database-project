@@ -6,4 +6,5 @@ export class Movie{
     genre: string;
     releaseDate: string;
     description: string;
+    img: string;
 }

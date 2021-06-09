@@ -10,18 +10,23 @@ import { ActorViewComponent } from './components/actor-view/actor-view.component
 import { DirectorViewComponent } from './components/director-view/director-view.component';
 import { ActorMainPageComponent } from './components/actor-main-page/actor-main-page.component';
 import { DirectorMainPageComponent } from './components/director-main-page/director-main-page.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'movies', component: MoviesMainPageComponent},
   {path: 'top-movies', component: TopMoviesComponent},
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'movies/:movieId', component: MovieViewComponent},
   {path: 'actors/:actorId', component: ActorViewComponent},
   {path: 'directors/:directorId', component: DirectorViewComponent},
   {path: 'actors', component: ActorMainPageComponent},
-  {path: 'directors', component: DirectorMainPageComponent}
+  {path: 'directors', component: DirectorMainPageComponent},
+  {path: 'reviews/:movieId', component: ReviewsComponent},
+  {path: 'addReview', component: AddReviewComponent}
 ];
 
 @NgModule({

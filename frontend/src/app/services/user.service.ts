@@ -4,15 +4,11 @@ import { WebRequestsService } from './web-requests.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DirectorService {
+export class UserService {
 
   constructor(private webService: WebRequestsService) { }
 
-  getDirectorWithId(directorId: string){
-    return this.webService.get(`directors/${directorId}`);
-  }
-
-  getDirectors(){
-    return this.webService.get('directors');
+  getUserWithId(userId: string){
+    return this.webService.get(`users/${userId}`);
   }
 }

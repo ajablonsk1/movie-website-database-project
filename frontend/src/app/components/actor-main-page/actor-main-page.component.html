@@ -1,1 +1,29 @@
-<p>actor-main-page works!</p>
+<div *ngFor="let actor of actors">
+    <div class="columns is-mobile is-centered mt-2">
+        <div class="column is-centered is-one-third">
+            <div class="card">
+                <header class="card-header">
+                <p class="card-header-title">
+                    {{actor.firstName}} {{actor.lastName}}
+                </p>
+                </header>
+                <div class="card-content">
+                    <div class="columns is-centered">
+                        <div class="column is-one-third">
+                            <img src="assets/{{actor.img}}" style="width: 200px; height: 250px;">
+                        </div>
+                        <div class="column is-centered">
+                            <div class="content">
+                                {{actor.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                <a href="/actors/{{actor._id}}" class="card-footer-item">More details</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+

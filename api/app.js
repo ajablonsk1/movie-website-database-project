@@ -197,13 +197,15 @@ app.post('/movies', (req, res) => {
     let genre = req.body.genre;
     let releaseDate = req.body.releaseDate;
     let description = req.body.description;
+    let img = req.body.img;
     let newMovie = new Movie({
         title,
         director,
         actors,
         genre,
         releaseDate,
-        description
+        description,
+        img
     });
     newMovie.save().then((movieDoc) => {
         res.send(movieDoc);
@@ -283,37 +285,6 @@ app.get('/starsByMovieTitle/:filter', (req, res) => {
         { $match: { 'movie.title' : { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } }},
         { $group: { _id: "$movie._id", avgStars: { $avg: "$stars" } } },
         { $project: { _id: 0, avgStars : 1}}
-    ]).then((reviewDoc) => {
-        res.send(reviewDoc);
-    }).catch((err) => {
-        res.send(err);
-    });
-});
-
-
-//Get top N movies (N - number of top movies)
-app.get('/getTopNMovies/:N', (req, res) => {
-    const mongoose = require("mongoose");
-    Review.aggregate([
-        { $lookup : { 
-            from: 'movies', 
-            localField: 'movieID', foreignField: '_id', 
-            as: 'movie'} 
-        },
-        { $unwind: '$movie'},
-        { $group: { _id: "$movie._id", avgStars: { $avg: "$stars" } } },
-        { $project: { avgStars : 1}},
-        { $lookup: {
-            from: 'movies', 
-            localField: '_id', foreignField: '_id', 
-            as: 'movie'
-        }
-        },
-        { $unwind: '$movie' },
-        { $project: { title : "$movie.title", avgStars : "$avgStars"} },
-        { $project: { _id : 0 }},
-        { $sort: { avgStars: -1 }},
-        { $limit: parseInt(req.params.N) }
     ]).then((reviewDoc) => {
         res.send(reviewDoc);
     }).catch((err) => {

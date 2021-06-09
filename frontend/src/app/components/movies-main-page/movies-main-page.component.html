@@ -1,0 +1,28 @@
+<div *ngFor="let movie of movies">
+    <div class="columns is-mobile is-centered mt-2">
+        <div class="column is-centered is-half">
+            <div class="card">
+                <header class="card-header">
+                <p class="card-header-title">
+                    {{movie.title}}
+                </p>
+                </header>
+                <div class="card-content">
+                    <div class="columns is-centered">
+                        <div class="column is-one-third">
+                            <img src="assets/home.jpeg">
+                        </div>
+                        <div class="column is-centered">
+                            <div class="content">
+                                {{movie.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>

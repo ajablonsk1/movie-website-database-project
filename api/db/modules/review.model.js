@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const user = require('./user.model')
 
 const ReviewSchema = new mongoose.Schema({
     author: {
-        // TO CHANGE - FOREIGN KEY TO USER
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: [true, 'Author is required'],
         minlength: 1,
         maxlength: 50,

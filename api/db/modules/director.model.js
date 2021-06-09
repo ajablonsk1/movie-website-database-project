@@ -33,6 +33,9 @@ const DirectorSchema = new mongoose.Schema({
         ],
     description: {
         type: String,
+    },
+    img: {
+        type: String,
     }
 });
 

@@ -1,0 +1,46 @@
+<div class="columns is-mobile is-centered mt-6">
+    <div class="column is-half">
+        <h1 class="title has-text-primary">
+            SIGN UP
+        </h1>
+    </div>
+</div>
+<div class="columns is-mobile is-centered">
+    <div class="column is-half">
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input #emailInput class="input" type="email" placeholder="Email">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input #password1Input class="input" type="password" placeholder="Password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input #password2Input class="input" type="password" placeholder="Repeat password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+            <div class="has-text-danger mb-2" *ngIf="wrongPasswords(password1Input.value, password2Input.value)">
+                Passwords don't match!
+            </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success" (click)="onSignupButtonClicked(emailInput.value, password1Input.value, password2Input.value)">
+                Sign up
+              </button>
+            </p>
+          </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -197,13 +197,15 @@ app.post('/movies', (req, res) => {
     let genre = req.body.genre;
     let releaseDate = req.body.releaseDate;
     let description = req.body.description;
+    let img = req.body.img;
     let newMovie = new Movie({
         title,
         director,
         actors,
         genre,
         releaseDate,
-        description
+        description,
+        img
     });
     newMovie.save().then((movieDoc) => {
         res.send(movieDoc);

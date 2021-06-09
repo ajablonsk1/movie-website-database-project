@@ -140,7 +140,7 @@ app.get('/actors/selectedActorInfoByMovieTitle/:filter' ,(req, res) => {
             _id: 0,
             "First name": "$firstName", 
             "Last name": "$lastName", 
-            "Birthday": {$substr: ["$birthDay", 0, 10]},
+            "Birthday": {$substr: ["$dateOfBirth", 0, 10]},
             "Passed away on" :
                 { $cond: {
                     if: { $not: ['$dateOfDeath']},

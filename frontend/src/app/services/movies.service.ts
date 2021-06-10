@@ -15,4 +15,8 @@ export class MoviesService {
   getMovieWithId(movieId: string){
     return this.webService.get(`movies/${movieId}`);
   }
+
+  getTopMovies(n: number){
+    return this.webService.get(`getTopNMovies/${n}`);
+  }
 }

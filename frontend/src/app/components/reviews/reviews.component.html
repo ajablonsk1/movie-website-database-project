@@ -1,0 +1,40 @@
+<div class="columns is-mobile is-centered mt-2">
+    <div class="column is-centered is-one-third">
+        <p class="title is-3">
+            "{{movie.title}}" reviews
+        </p>
+    </div>
+</div>
+<div class="columns is-mobile is-centered mt-2">
+    <div class="column is-centered is-one-third">
+        <p class="title is-3">
+            Add your own review
+            <a href="addReview" ><button class="button is-primary">Add</button></a>
+        </p>
+    </div>
+</div>
+<div *ngFor="let review of reviews; let i=index">
+    <div class="columns is-mobile is-centered mt-2">
+        <div class="column is-centered is-one-third">
+            <header class="header">
+                </header>
+            <div class="card">
+                <header class="card-header">
+                <p class="card-header-title">
+                    {{authors[i].email}}
+                </p>
+                </header>
+                <div class="card-content">
+                    <div class="columns is-centered">
+                        <div class="column is-centered">
+                            <div class="content">
+                                {{review.reviewBody}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

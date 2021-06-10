@@ -11,4 +11,8 @@ export class ActorService {
   getActorWithId(actorId: string){
     return this.webService.get(`actors/${actorId}`);
   }
+
+  getActors(){
+    return this.webService.get('actors');
+  }
 }

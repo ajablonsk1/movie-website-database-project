@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Actor } from 'src/app/models/actor.model';
+import { ActorService } from 'src/app/services/actor.service';
 
 @Component({
   selector: 'app-actor-main-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorMainPageComponent implements OnInit {
 
-  constructor() { }
+  actors: Actor[];
+
+  constructor(private actorService: ActorService) { }
 
   ngOnInit(): void {
+    this.actorService.getActors().subscribe((actors: any) => {
+      this.actors = actors;
+    })
   }
 
 }

@@ -1,1 +1,40 @@
-<p>top-movies works!</p>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-one-third">
+        <h5 class="title is-5 mt-5">Type N to see TOP N movies!</h5>
+        <input #n class="input is-primary" type="number" placeholder="Primary input">
+        <button class="button is-primary mt-3 is-pulled-left" (click)="onSubmitClicked(n.value)">Submit</button>
+    </div>
+</div>
+
+<div *ngIf="isClicked">
+    <div *ngFor="let movie of movies">
+        <div class="columns is-mobile is-centered mt-2">
+            <div class="column is-centered is-half">
+                <div class="card">
+                    <header class="card-header">
+                    <p class="card-header-title">
+                        {{movie.title}}
+                    </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns is-centered">
+                            <div class="column is-one-third">
+                                <img src="assets/{{movie.img}}">
+                            </div>
+                            <div class="column is-centered">
+                                <div class="content">
+                                    {{movie.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                    <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

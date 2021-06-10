@@ -7,4 +7,5 @@ export class Actor{
     movieNumber: number;
     topMovies: string[];
     description: string;
+    img: string;
 }

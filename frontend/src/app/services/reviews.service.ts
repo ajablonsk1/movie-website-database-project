@@ -4,15 +4,11 @@ import { WebRequestsService } from './web-requests.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DirectorService {
+export class ReviewsService {
 
   constructor(private webService: WebRequestsService) { }
 
-  getDirectorWithId(directorId: string){
-    return this.webService.get(`directors/${directorId}`);
-  }
-
-  getDirectors(){
-    return this.webService.get('directors');
+  getReviewsForGivenMovieId(movieId: string){
+    return this.webService.get(`movieReviews/${movieId}`);
   }
 }

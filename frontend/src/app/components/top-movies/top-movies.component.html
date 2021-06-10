@@ -8,13 +8,13 @@
 </div>
 
 <div *ngIf="isClicked">
-    <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of movies; let i = index">
         <div class="columns is-mobile is-centered mt-2">
             <div class="column is-centered is-half">
                 <div class="card">
                     <header class="card-header">
                     <p class="card-header-title">
-                        {{movie.title}} {{movie.img}}
+                        {{movie.title}}, {{movie.avgStars}}
                     </p>
                     </header>
                     <div class="card-content">

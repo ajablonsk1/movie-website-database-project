@@ -1,5 +1,7 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie.model';
+import { Stars } from 'src/app/models/stars.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -13,6 +15,8 @@ export class TopMoviesComponent implements OnInit {
 
   movies: Movie[];
 
+  stars: number[];
+
   constructor(private movieService: MoviesService) { }
 
   ngOnInit(): void {
@@ -21,9 +25,12 @@ export class TopMoviesComponent implements OnInit {
 
   onSubmitClicked(n: string){
     let m = parseInt(n);
+    this.stars = [];
     this.movieService.getTopMovies(m).subscribe((movies: any) => {
       this.movies = movies;
-      console.log(movies);
+      for(let movieIdx in this.movies){
+        this.movies[movieIdx].avgStars = String(Math.round(Number(this.movies[movieIdx].avgStars) * 100) /100);
+      }
     })
     this.isClicked = true;
   }

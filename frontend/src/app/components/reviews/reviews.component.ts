@@ -32,9 +32,9 @@ export class ReviewsComponent implements OnInit {
         })
         this.reviewService.getReviewsForGivenMovieId(params.movieId).subscribe((reviews: any) => {
           this.reviews = reviews;
-          for(let review in this.reviews){
-            this.userService.getUserWithId(reviews[review].author).subscribe((author: any) => {
-              this.authors.push(author);
+          for(let i = 0; i < this.reviews.length; i++){
+            this.userService.getUserWithId(reviews[i].author).subscribe((author: any) => {
+              this.reviews[i].author = author.email;
             })
           }
         })

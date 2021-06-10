@@ -10,6 +10,8 @@ import { DirectorService } from 'src/app/services/director.service';
 export class DirectorMainPageComponent implements OnInit {
 
   directors: Director[];
+  isSearchClicked: boolean;
+  searchedDirectors: Director[];
 
   constructor(private directorService: DirectorService) { }
 
@@ -17,6 +19,14 @@ export class DirectorMainPageComponent implements OnInit {
     this.directorService.getDirectors().subscribe((directors: any) => {
       this.directors = directors;
     })
+    this.isSearchClicked = false;
+  }
+
+  onSearchClicked(text: string){
+    this.directorService.getDirectorWithSearch(text).subscribe((directors: any) =>{
+      this.searchedDirectors = directors;
+    });
+    this.isSearchClicked = true;
   }
 
 }

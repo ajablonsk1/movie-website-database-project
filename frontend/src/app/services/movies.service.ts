@@ -19,4 +19,15 @@ export class MoviesService {
   getTopMovies(n: number){
     return this.webService.get(`getTopNMovies/${n}`);
   }
+
+  getMoviesWithSearch(text: string){
+    return this.webService.get(`moviesByTitle/${text}`);
+  }
+
+  getAvgStarsWithMovieId(movieId: string){
+    return this.webService.get(`starsByMovieId/${movieId}`);
+  }
+  getAvgStarsWithMovieTitle(movieId: string){
+    return this.webService.get(`starsByMovieTitle/${movieId}`);
+  }
 }

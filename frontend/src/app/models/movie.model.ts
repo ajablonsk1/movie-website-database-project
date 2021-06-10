@@ -7,4 +7,5 @@ export class Movie{
     releaseDate: string;
     description: string;
     img: string;
+    avgStars: string;
 }

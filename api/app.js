@@ -68,6 +68,19 @@ app.get('/actors/actorByLastName/:lastName', (req, res) => {
     });
 });
 
+//Find actors with a filter string in a lastname 
+app.get('/actorsByLastname/:filter', (req, res) => {
+    Actor.find(
+        // Use match to filter only the matching entries
+            { lastName : { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } },
+            { _id : 0 }
+    ).then((movieDoc) => {
+        res.send(movieDoc);
+    }).catch((err) => {
+        res.send(err);
+    });
+});
+
 // Add actor to database
 app.post('/actors', (req, res) => {
     let firstName = req.body.firstName;
@@ -397,6 +410,19 @@ app.delete('/directors/:id', (req, res) => {
         _id: req.params.id
     }).then((directorDoc) => {
         res.send(directorDoc);
+    });
+});
+
+//Find directors with a filter string in a lastname 
+app.get('/directorsByLastname/:filter', (req, res) => {
+    Director.find(
+        // Use match to filter only the matching entries
+            { lastName : { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } },
+            { _id : 0 }
+    ).then((movieDoc) => {
+        res.send(movieDoc);
+    }).catch((err) => {
+        res.send(err);
     });
 });
 

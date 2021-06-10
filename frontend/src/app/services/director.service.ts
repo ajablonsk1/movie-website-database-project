@@ -15,4 +15,8 @@ export class DirectorService {
   getDirectors(){
     return this.webService.get('directors');
   }
+
+  getDirectorWithSearch(text: string){
+    return this.webService.get(`directorsByLastname/${text}`);
+  }
 }

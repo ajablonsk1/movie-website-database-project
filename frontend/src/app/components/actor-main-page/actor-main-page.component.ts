@@ -10,6 +10,8 @@ import { ActorService } from 'src/app/services/actor.service';
 export class ActorMainPageComponent implements OnInit {
 
   actors: Actor[];
+  isSearchClicked: boolean;
+  searchedActors: Actor[];
 
   constructor(private actorService: ActorService) { }
 
@@ -17,6 +19,14 @@ export class ActorMainPageComponent implements OnInit {
     this.actorService.getActors().subscribe((actors: any) => {
       this.actors = actors;
     })
+    this.isSearchClicked = false;
+  }
+
+  onSearchClicked(text: string){
+    this.actorService.getActorsWithSearch(text).subscribe((actors: any) =>{
+      this.searchedActors = actors;
+    });
+    this.isSearchClicked = true;
   }
 
 }

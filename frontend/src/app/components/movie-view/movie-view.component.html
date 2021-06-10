@@ -16,6 +16,7 @@
                 <p class="subtitle is-5 mt-1">Actors: <span *ngFor="let actor of actors; last as lastActor">
                     <a href="/actors/{{actor._id}}">{{actor.firstName}} {{actor.lastName}}</a> 
                     <span *ngIf="!lastActor">, </span> </span> 
+                    <p class="subtitle is-5 mt-1">Rating: {{stars}}</p>
                 </div>
             </div>
         

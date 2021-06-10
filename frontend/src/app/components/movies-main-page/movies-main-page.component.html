@@ -1,28 +1,74 @@
-<div *ngFor="let movie of movies">
-    <div class="columns is-mobile is-centered mt-2">
-        <div class="column is-centered is-half">
-            <div class="card">
-                <header class="card-header">
-                <p class="card-header-title">
-                    {{movie.title}}
-                </p>
-                </header>
-                <div class="card-content">
-                    <div class="columns is-centered">
-                        <div class="column is-one-third">
-                            <img src="assets/{{movie.img}}" style="width: 200px; height: 300;">
-                        </div>
-                        <div class="column is-centered">
-                            <div class="content">
-                                {{movie.description}}
+
+<div class="columns is-centered mt-4">
+    <div class="column is-half">
+        <div class="columns is-centered mt-4">
+        <div class="column is-two-thirds is-centered">
+            <input #search class="input is-primary" type="text" placeholder="Search by title">
+        </div>
+            <div class="column"><button class="button is-primary" (click)="onSearchClicked(search.value)">Search</button>
+        </div>
+    </div>
+    </div>
+</div>
+<div *ngIf="!isSearchClicked">
+    <div *ngFor="let movie of movies; let i = index">
+        <div class="columns is-mobile is-centered mt-2">
+            <div class="column is-centered is-half">
+                <div class="card">
+                    <header class="card-header">
+                    <p class="card-header-title">
+                        {{movie.title}}
+                    </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns is-centered">
+                            <div class="column is-one-third">
+                                <img src="assets/{{movie.img}}" style="width: 200px; height: 300;">
+                            </div>
+                            <div class="column is-centered">
+                                <div class="content">
+                                    {{movie.description}}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <footer class="card-footer">
+                    <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
+                    <a href="/reviews/{{movie._id}}" class="card-footer-item">See reviews</a>
+                    </footer>
                 </div>
-                <footer class="card-footer">
-                <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
-                <a href="/reviews/{{movie._id}}" class="card-footer-item">See reviews</a>
-                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isSearchClicked">
+    <div *ngFor="let movie of searchedMovies">
+        <div class="columns is-mobile is-centered mt-2">
+            <div class="column is-centered is-half">
+                <div class="card">
+                    <header class="card-header">
+                    <p class="card-header-title">
+                        {{movie.title}}
+                    </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns is-centered">
+                            <div class="column is-one-third">
+                                <img src="assets/{{movie.img}}" style="width: 200px; height: 300;">
+                            </div>
+                            <div class="column is-centered">
+                                <div class="content">
+                                    {{movie.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                    <a href="/movies/{{movie._id}}" class="card-footer-item">More details</a>
+                    <a href="/reviews/{{movie._id}}" class="card-footer-item">See reviews</a>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>

@@ -15,4 +15,8 @@ export class ActorService {
   getActors(){
     return this.webService.get('actors');
   }
+
+  getActorsWithSearch(text: string){
+    return this.webService.get(`actorsByLastname/${text}`);
+  }
 }

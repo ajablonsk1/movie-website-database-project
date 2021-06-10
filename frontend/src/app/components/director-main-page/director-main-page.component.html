@@ -1,27 +1,72 @@
-<div *ngFor="let director of directors">
-    <div class="columns is-mobile is-centered mt-2">
-        <div class="column is-centered is-one-third">
-            <div class="card">
-                <header class="card-header">
-                <p class="card-header-title">
-                    {{director.firstName}} {{director.lastName}}
-                </p>
-                </header>
-                <div class="card-content">
-                    <div class="columns is-centered">
-                        <div class="column is-one-third">
-                            <img src="assets/{{director.img}}" style="width: 200px; height: 250px;">
-                        </div>
-                        <div class="column is-centered">
-                            <div class="content">
-                                {{director.description}}
+<div class="columns is-centered mt-4">
+    <div class="column is-half">
+        <div class="columns is-centered mt-4">
+        <div class="column is-two-thirds is-centered">
+            <input #search class="input is-primary" type="text" placeholder="Search by lastname">
+        </div>
+            <div class="column"><button class="button is-primary" (click)="onSearchClicked(search.value)">Search</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div *ngIf="!isSearchClicked">
+    <div *ngFor="let director of directors">
+        <div class="columns is-mobile is-centered mt-2">
+            <div class="column is-centered is-one-third">
+                <div class="card">
+                    <header class="card-header">
+                    <p class="card-header-title">
+                        {{director.firstName}} {{director.lastName}}
+                    </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns is-centered">
+                            <div class="column is-one-third">
+                                <img src="assets/{{director.img}}" style="width: 200px; height: 250px;">
+                            </div>
+                            <div class="column is-centered">
+                                <div class="content">
+                                    {{director.description}}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <footer class="card-footer">
+                    <a href="directors/{{director._id}}" class="card-footer-item">More details</a>
+                    </footer>
                 </div>
-                <footer class="card-footer">
-                <a href="directors/{{director._id}}" class="card-footer-item">More details</a>
-                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isSearchClicked">
+    <div *ngFor="let director of searchedDirectors">
+        <div class="columns is-mobile is-centered mt-2">
+            <div class="column is-centered is-one-third">
+                <div class="card">
+                    <header class="card-header">
+                    <p class="card-header-title">
+                        {{director.firstName}} {{director.lastName}}
+                    </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns is-centered">
+                            <div class="column is-one-third">
+                                <img src="assets/{{director.img}}" style="width: 200px; height: 250px;">
+                            </div>
+                            <div class="column is-centered">
+                                <div class="content">
+                                    {{director.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                    <a href="directors/{{director._id}}" class="card-footer-item">More details</a>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>

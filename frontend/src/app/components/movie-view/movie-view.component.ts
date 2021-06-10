@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Actor } from 'src/app/models/actor.model';
 import { Director } from 'src/app/models/director.model';
 import { Movie } from 'src/app/models/movie.model';
+import { Stars } from 'src/app/models/stars.model';
 import { ActorService } from 'src/app/services/actor.service';
 import { DirectorService } from 'src/app/services/director.service';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -18,6 +19,7 @@ export class MovieViewComponent implements OnInit {
   director: Director;
   actors: Actor[];
   selectedMovieId: string;
+  stars: number;
 
   constructor(private moviesService: MoviesService, private route: ActivatedRoute,
     private directorsService: DirectorService, private actorsService: ActorService) { }
@@ -30,6 +32,9 @@ export class MovieViewComponent implements OnInit {
         this.moviesService.getMovieWithId(params.movieId).subscribe((movie: any) => {
           this.movie = movie;
           this.movie.releaseDate = this.movie.releaseDate.substring(0, 10); 
+          this.moviesService.getAvgStarsWithMovieId(params.movieId).subscribe((stars: any) => {
+            this.stars = Math.round(stars[0].avgStars * 100) /100;
+          })
           this.directorsService.getDirectorWithId(this.movie.director).subscribe((director: any) => {
             this.director = director;
           })

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise;
 
-const uri = "mongodb+srv://adrian:vCrTYjIl@cluster0.hbvl1.mongodb.net/MovieDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://bas:YGZcpGzBaR@cluster0.hbvl1.mongodb.net/MovieDatabase?retryWrites=true&w=majority";
 
 const connectionParams={
     useNewUrlParser: true,

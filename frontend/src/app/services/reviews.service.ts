@@ -11,4 +11,8 @@ export class ReviewsService {
   getReviewsForGivenMovieId(movieId: string){
     return this.webService.get(`movieReviews/${movieId}`);
   }
+
+  addReviewToDatabase(author: string, stars: number, reviewBody: string, movieID: string){
+    return this.webService.post('reviews', {author, stars,reviewBody, movieID});
+  }
 }

@@ -32,6 +32,7 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
+          <div *ngIf="this.authService.getUserId() === null">
           <div class="buttons">
             <a class="button is-primary" href="signup">
               <strong>Sign up</strong>
@@ -41,7 +42,11 @@
             </a>
           </div>
         </div>
+        <div *ngIf="this.authService.getUserId() !== null">
+          <button class="button is-primary" (click)="logoutClick()">Log out</button>
+          </div>
+        </div>
+        </div>
       </div>
-    </div>
   </nav>
 <router-outlet></router-outlet>

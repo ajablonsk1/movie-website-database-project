@@ -17,6 +17,7 @@ export class AuthService {
       tap((res: HttpResponse<any>) => {
         this.setSession(res.body._id, res.headers.get('x-access-token')!, res.headers.get('x-refresh-token')!);
         console.log('Logged in!');
+        console.log(this.getUserId())
       })
     )
   }
@@ -61,7 +62,7 @@ export class AuthService {
   }
 
   getUserId(){
-    return localStorage.getItem('user-id');
+    return localStorage.getItem('user_id');
   }
 
   getNewAccessToken(){

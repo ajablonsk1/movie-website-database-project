@@ -23,6 +23,7 @@ export class TopMoviesComponent implements OnInit {
     let m = parseInt(n);
     this.movieService.getTopMovies(m).subscribe((movies: any) => {
       this.movies = movies;
+      console.log(movies);
     })
     this.isClicked = true;
   }

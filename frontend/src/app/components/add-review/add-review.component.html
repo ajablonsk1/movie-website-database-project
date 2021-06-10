@@ -1,1 +1,19 @@
-<p>add-review works!</p>
+<div *ngIf="!isLoggedIn">
+    <div class="columns is-centered mt-4">
+        <div class="column is-half">
+            <h2 class="title is-2">You must log in in order to write reviews!</h2>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoggedIn">
+    <div class="columns is-centered mt-4">
+        <div class="column is-half">
+            <h2 class="title is-2 ">Write your review</h2>
+            <input #review_text class="input is-primary" type="text" placeholder="Primary input">
+            <h2 class="title is-2 mt-4">Type your rating</h2>
+            <input #rating class="input is-primary" type="number" placeholder="Primary input">
+            <button class="button is-primary mt-4" (click)="submitReview(review_text.value, rating.value)">Submit</button>
+        </div>
+    </div>
+</div>

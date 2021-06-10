@@ -12,9 +12,11 @@ import { ActorMainPageComponent } from './components/actor-main-page/actor-main-
 import { DirectorMainPageComponent } from './components/director-main-page/director-main-page.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'movies', component: MoviesMainPageComponent},
   {path: 'top-movies', component: TopMoviesComponent},
@@ -26,7 +28,7 @@ const routes: Routes = [
   {path: 'actors', component: ActorMainPageComponent},
   {path: 'directors', component: DirectorMainPageComponent},
   {path: 'reviews/:movieId', component: ReviewsComponent},
-  {path: 'addReview', component: AddReviewComponent}
+  {path: 'addReview/:movieId', component: AddReviewComponent}
 ];
 
 @NgModule({

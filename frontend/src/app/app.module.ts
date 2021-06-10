@@ -16,6 +16,8 @@ import { DirectorMainPageComponent } from './components/director-main-page/direc
 import { ActorMainPageComponent } from './components/actor-main-page/actor-main-page.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { AuthService } from './services/auth.service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { AddReviewComponent } from './components/add-review/add-review.component
     DirectorMainPageComponent,
     ActorMainPageComponent,
     ReviewsComponent,
-    AddReviewComponent
+    AddReviewComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -41,4 +44,9 @@ import { AddReviewComponent } from './components/add-review/add-review.component
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(private authService: AuthService){
+
+  }
+}

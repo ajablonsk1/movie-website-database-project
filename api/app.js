@@ -142,7 +142,7 @@ app.get('/actors/selectedActorInfoByMovieTitle/:filter' ,(req, res) => {
             _id: 0,
             "First name": "$firstName", 
             "Last name": "$lastName", 
-            "Birthday": {$substr: ["$birthDay", 0, 10]},
+            "Birthday": {$substr: ["$dateOfBirth", 0, 10]},
             "Passed away on" :
                 { $cond: {
                     if: { $not: ['$dateOfDeath']},
@@ -274,7 +274,7 @@ app.get('/getTopNMovies/:N', (req, res) => {
         }
         },
         { $unwind: '$movie' },
-        { $project: { title : "$movie.title", avgStars : "$avgStars"} },
+        { $project: { title : "$movie.title", avgStars : "$avgStars", img: "$movie.img", description:"$movie.description"} },
         { $project: { _id : 0 }},
         { $sort: { avgStars: -1 }},
         { $limit: parseInt(req.params.N) }
@@ -300,6 +300,7 @@ app.get('/starsByMovieId/:id', (req, res) => {
     });
 });
 
+// Get avg stars for movie with given title
 app.get('/starsByMovieTitle/:filter', (req, res) => {
     const mongoose = require("mongoose");
     Review.aggregate([

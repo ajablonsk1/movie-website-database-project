@@ -10,9 +10,9 @@
     <div class="columns is-centered mt-4">
         <div class="column is-half">
             <h2 class="title is-2 ">Write your review</h2>
-            <input #review_text class="input is-primary" type="text" placeholder="Primary input">
+            <input #review_text class="input is-primary" type="text" placeholder="Add review">
             <h2 class="title is-2 mt-4">Type your rating</h2>
-            <input #rating class="input is-primary" type="number" placeholder="Add review">
+            <input #rating class="input is-primary" type="number" placeholder="Add rating 1-5">
             <button class="button is-primary mt-4" (click)="submitReview(review_text.value, rating.value)">Submit</button>
         </div>
     </div>

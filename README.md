@@ -14,12 +14,4 @@ Aplikacja bazodanowa (typu filmweb) obsługująca przeglądanie, recenzję, ocen
 ## Technologie, używane w projekcie:
 Część bazodanowa: MongoDB <br>
 Część backandowa: Express.js <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
 Część aplikacyjna: Angular
-=======
-Część aplikacyjna: Angular
->>>>>>> ac93eba08f0cabe9478692f256417eed85ad4028
-=======
-Część aplikacyjna: Angular
->>>>>>> ac93eba08f0cabe9478692f256417eed85ad4028

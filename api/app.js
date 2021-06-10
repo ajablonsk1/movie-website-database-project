@@ -111,15 +111,21 @@ app.delete('/actors/:id', (req, res) => {
     });
 });
 
-//Find actors with a filter string in a title 
+//Get full actor info with a filter string in a title (too much info)
 app.get('/actors/allActorInfoByMovieTitle/:filter' ,(req, res) => {
     Actor.aggregate([
-        // Unwind the topMovies array
         { $unwind: "$topMovies" },
-    
-        // Then use match to filter only the matching entries
+
+         { $lookup: {
+             from: 'movies', 
+             localField: 'topMovies', foreignField: '_id', 
+             as: 'topMovies'
+        }},
+
+        { $unwind: '$topMovies' },
+
         { $match: 
-            { 'topMovies': { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } }
+            { 'topMovies.title': { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } }
         }
     ]).then((actorDoc) => {
         res.send(actorDoc);
@@ -128,14 +134,22 @@ app.get('/actors/allActorInfoByMovieTitle/:filter' ,(req, res) => {
     });
 });
 
+
+// Get reasonable info (use rather this one) with a filter string in the title
 app.get('/actors/selectedActorInfoByMovieTitle/:filter' ,(req, res) => {
     Actor.aggregate([
-        // Unwind the topMovies array
         { $unwind: "$topMovies" },
-    
-        // Then use match to filter only the matching entries
+
+         { $lookup: {
+             from: 'movies', 
+             localField: 'topMovies', foreignField: '_id', 
+             as: 'topMovies'
+        }},
+
+        { $unwind: '$topMovies' },
+
         { $match: 
-            { 'topMovies': { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } }
+            { 'topMovies.title': { "$regex": new RegExp('.*' + req.params.filter + '.*'), $options: "si" } }
         },
 
         { $project: {

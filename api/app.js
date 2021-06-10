@@ -509,6 +509,26 @@ app.get('/users/:id', (req, res) => {
     });
 });
 
+//Get N users with the biggest no. of review posts
+app.get('/getMostActiveUser/:N', (req, res) => {
+    Review.aggregate([
+        { $group: { _id: "$author", reviewCount: {$sum: 1}} },
+        { $sort: { reviewCount: -1}},
+        { $lookup: {
+            from: 'users', 
+            localField: '_id', foreignField: '_id', 
+            as: 'user'
+       }},
+       { $unwind: '$user'},
+       { $project: { "reviewCount" : "$reviewCount", "userEmail" : "$user.email", _id : 0}},
+       { $limit: parseInt(req.params.N)}
+    ]).then((reviewDoc) => {
+        res.send(reviewDoc);
+    }).catch((err) => {
+        res.send(err);
+    });
+});
+
 //User sign up
 app.post('/users', (req, res) => {
     let body = req.body;

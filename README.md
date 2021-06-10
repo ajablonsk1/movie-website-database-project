@@ -1,5 +1,3 @@
-#IN PROGRESS
-
 # Database FilmWeb project
 Database project for IT studies.
 

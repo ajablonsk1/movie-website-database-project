@@ -1,5 +1,5 @@
 # Database FilmWeb project
-Database project for IT studies.
+Database project for Computer Science studies.
 
 ## Technologies:
 Database: MongoDB <br>
